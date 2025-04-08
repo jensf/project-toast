@@ -1,14 +1,22 @@
-import React from 'react';
+import React from "react";
+import ToastForm from "../ToastForm";
 
-import ToastPlayground from '../ToastPlayground';
-import Footer from '../Footer';
+import Footer from "../Footer";
+
+import styles from "./App.module.css";
 
 function App() {
   return (
-    <>
-      <ToastPlayground />
+    <div className={styles.wrapper}>
+      <header>
+        <img alt="Cute toast mascot" src="/toast.png" />
+        <h1>Toast Playground.</h1>
+      </header>
+
+      <ToastForm></ToastForm>
+
       <Footer />
-    </>
+    </div>
   );
 }
 
