@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./ToastForm.module.css";
 import Button from "../Button";
+import { ToastContext } from "../ToastProvider";
 
-function ToastForm({ pushToast }) {
+function ToastForm() {
   const [message, setMessage] = React.useState("");
   const [variant, setVariant] = React.useState("notice"); //notice, warning, success, error
+  const { pushToast } = React.useContext(ToastContext);
 
   const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
