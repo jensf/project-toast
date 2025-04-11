@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ToastForm.module.css";
 import Button from "../Button";
 
-function ToastForm() {
+function ToastForm({ pushToast }) {
   const [message, setMessage] = React.useState("");
   const [variant, setVariant] = React.useState("notice"); //notice, warning, success, error
 
@@ -16,8 +16,10 @@ function ToastForm() {
   function toastIt(e) {
     e.preventDefault();
     console.log(`make toast: ${variant}: ${message}.`);
+    pushToast({ message: message, variant: variant });
     setMessage("");
   }
+
   return (
     <form className={styles.controlsWrapper} onSubmit={toastIt}>
       <div className={styles.row}>
@@ -44,12 +46,13 @@ function ToastForm() {
         <div className={`${styles.inputWrapper} ${styles.radioWrapper}`}>
           {VARIANT_OPTIONS.map((variantOption) => (
             <Radio
+              key={variantOption}
               radioValue={variantOption}
               variant={variant}
               setVariant={setVariant}
             />
           ))}
-          selectedVariant: {variant}.
+          {/*selectedVariant: {variant}.*/}
         </div>
       </div>
 
