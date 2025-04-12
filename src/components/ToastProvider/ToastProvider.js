@@ -1,18 +1,22 @@
 import React from "react";
 
 export const ToastContext = React.createContext();
-/*
-React.useEffect(() => {
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      console.log("Escape key pressed");
-      // your logic here
-    }
-  });
-}, []);*/
 
 function ToastProvider({ children }) {
   const [toasts, setToasts] = React.useState([]); // holds recent toasts
+
+  React.useEffect(() => {
+    function handleEscape(e) {
+      if (e.key === "Escape") {
+        console.log("Escape key pressed");
+        setToasts([]);
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, []);
 
   function pushToast(toast) {
     const newToasts = [...toasts, { ...toast, key: crypto.randomUUID() }];
