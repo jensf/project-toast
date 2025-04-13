@@ -13,7 +13,7 @@ function useEscape(escapeFunction, functionValue) {
     document.addEventListener("keydown", handleEscape);
 
     return () => document.removeEventListener("keydown", handleEscape);
-  }, []);
+  }, [escapeFunction, functionValue]);
 }
 
 export default useEscape;

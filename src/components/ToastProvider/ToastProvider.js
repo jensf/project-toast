@@ -5,20 +5,9 @@ export const ToastContext = React.createContext();
 function ToastProvider({ children }) {
   const [toasts, setToasts] = React.useState([]); // holds recent toasts
 
-  useEscape(setToasts, []);
-  /*  React.useEffect(() => {
-    function handleEscape(e) {
-      if (e.key === "Escape") {
-        console.log("Escape key pressed");
-        setToasts([]);
-      }
-    }
+  const emptyArray = React.useMemo(() => [], []);
+  useEscape(setToasts, emptyArray);
 
-    document.addEventListener("keydown", handleEscape);
-
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, []);
-*/
   function pushToast(toast) {
     const newToasts = [...toasts, { ...toast, key: crypto.randomUUID() }];
     //console.log(newToasts);

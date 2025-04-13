@@ -12,7 +12,7 @@ function App() {
       <div className={styles.wrapper}>
         <header>
           <img alt="Cute toast mascot" src="/toast.png" />
-          <h1>Toast Playground.</h1>
+          <h1>Toast Project.</h1>
         </header>
         <ToastShelf></ToastShelf>
         <ToastForm></ToastForm>

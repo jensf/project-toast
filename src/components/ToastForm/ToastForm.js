@@ -17,7 +17,7 @@ function ToastForm() {
 
   function toastIt(e) {
     e.preventDefault();
-    console.log(`make toast: ${variant}: ${message}.`);
+    //console.log(`make toast: ${variant}: ${message}.`);
     pushToast({ message: message, variant: variant });
     setMessage("");
   }
